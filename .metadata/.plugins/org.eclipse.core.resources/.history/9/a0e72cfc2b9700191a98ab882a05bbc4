@@ -1,0 +1,37 @@
+package com.sowing.seed.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sowing.seed.model.Farmer;
+
+@RestController
+public class FarmerController {
+	private static Map<Integer,Farmer> farmers = new HashMap<>();
+	static{
+		Farmer f1 = new Farmer();
+		f1.setName("ABC");
+		f1.setPhone("98777773");
+		Farmer f2 = new Farmer();
+		f2.setName("XYZ");
+		f2.setPhone("32555676");
+		farmers.put(1, f1);
+		farmers.put(2, f2);
+		
+	}
+	
+	@RequestMapping(value="/farmers")
+	public ResponseEntity<Farmer> getAllFarmers(){
+		
+		return new ResponseEntity<>(farmers.values(), HttpStatus.OK);
+		
+	}
+	
+	
+
+}

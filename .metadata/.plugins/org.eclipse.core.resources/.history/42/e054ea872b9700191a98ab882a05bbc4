@@ -1,0 +1,10 @@
+package com.sowing.seed.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class FarmerController {
+	private Map<Integer,Farmer> farmers = new HashMap<>();
+	
+
+}
