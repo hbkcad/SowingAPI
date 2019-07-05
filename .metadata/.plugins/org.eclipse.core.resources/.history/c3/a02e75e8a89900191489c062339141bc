@@ -1,0 +1,10 @@
+package com.sowing.seed.service;
+
+public interface IStateService {
+
+	/*public List<State> getAllStates();
+
+	public void createState(State state);
+
+	public void save(State state);*/
+}

@@ -1,0 +1,5 @@
+package com.sowing.seed.dao;
+
+public interface IGrainDao {
+
+}

@@ -3,19 +3,41 @@ package com.sowing.seed.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.omg.PortableServer.RequestProcessingPolicyOperations;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sowing.seed.model.City;
 import com.sowing.seed.model.Farmer;
+import com.sowing.seed.model.Grain;
+import com.sowing.seed.model.Soil;
+import com.sowing.seed.model.State;
+import com.sowing.seed.service.ICityService;
+import com.sowing.seed.service.IGrainService;
+import com.sowing.seed.service.ISoilService;
+import com.sowing.seed.service.IStateService;
 
 @RestController
+
 public class FarmerController {
+	@Autowired
+	IStateService iStateService;
+	
+	@Autowired
+	ICityService iCityService;
+	
+	@Autowired
+	IGrainService iGrainService;
+	
+	@Autowired
+	ISoilService iSoilService;
+	
 	private static Map<Integer, Farmer> farmers = new HashMap<>();
 	static {
 		Farmer f1 = new Farmer();
@@ -35,6 +57,80 @@ public class FarmerController {
 
 	}
 
+	@RequestMapping(value = "/states")
+	@CrossOrigin(origins = "http://localhost:3000")
+	public ResponseEntity<Object> getAllStates() {
+		
+		return new ResponseEntity<>(iStateService.getAllStates(), HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/states", method = RequestMethod.POST)
+	@CrossOrigin(origins = "*")
+	public ResponseEntity<Object> createState(@RequestBody State state) {
+		
+		iStateService.createState(state);
+		return new ResponseEntity<Object>("State added successfully", HttpStatus.CREATED);
+	}
+
+	
+	@RequestMapping(value = "/cities", method = RequestMethod.GET)
+	@CrossOrigin(origins = "http://localhost:3000")
+	public ResponseEntity<Object> getAllCities() {
+		
+		return new ResponseEntity<>(iCityService.getAllCities(),HttpStatus.OK);
+
+	}
+	@RequestMapping(value = "/cities/{state}", method = RequestMethod.GET)
+	@CrossOrigin(origins = "http://localhost:3000")
+	public ResponseEntity<Object> getCityonState(@PathVariable("state") String state) {
+		
+		return new ResponseEntity<>(iCityService.getCityonState(state),HttpStatus.OK);
+
+	}
+	
+	
+	@RequestMapping(value = "/cities", method = RequestMethod.POST)
+	public ResponseEntity<Object> createCity(@RequestBody City city) {
+		
+		iCityService.createCity(city);
+		return new ResponseEntity<Object>("City added successfully", HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/grains")
+	@CrossOrigin(origins = "http://localhost:3000")
+	public ResponseEntity<Object> getAllGrains() {
+		
+		return new ResponseEntity<>(iGrainService.getAllGrains(), HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/grains", method = RequestMethod.POST)
+	
+	public ResponseEntity<Object> createGrain(@RequestBody Grain grain) {
+		
+		iGrainService.createGrain(grain);
+		return new ResponseEntity<Object>("Grain added successfully", HttpStatus.CREATED);
+	}
+	
+	
+	@RequestMapping(value = "/soil")
+	@CrossOrigin(origins = "http://localhost:3000")
+	public ResponseEntity<Object> getAllSoil() {
+		
+		return new ResponseEntity<>(iSoilService.getAllSoil(), HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/soil", method = RequestMethod.POST)
+	
+	public ResponseEntity<Object> createSoil(@RequestBody Soil soil) {
+		
+		iSoilService.createSoil(soil);
+		return new ResponseEntity<Object>("Soil added successfully", HttpStatus.CREATED);
+	}
+	
+	
 	@RequestMapping(value = "/farmers/{id}")
 	public ResponseEntity<Object> getFarmerByID(@PathVariable("id") String id) {
 		return new ResponseEntity<Object>(farmers.get(Integer.parseInt(id)), HttpStatus.OK);
@@ -46,4 +142,18 @@ public class FarmerController {
 		return new ResponseEntity<Object>("Farmer added successfully", HttpStatus.CREATED);
 	}
 
+	@RequestMapping(value = "/farmers/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Object> updateFarmer(@PathVariable("id") String id, @RequestBody Farmer farmer) {
+		Farmer updateFarmer = farmers.get(Integer.parseInt(id));
+		updateFarmer.setName(farmer.getName());
+		updateFarmer.setPhone(farmer.getPhone());
+		farmers.put(Integer.parseInt(id), updateFarmer);
+		return new ResponseEntity<Object>(farmers.values(), HttpStatus.ACCEPTED);
+	}
+
+	@RequestMapping(value = "farmers/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Object> deletefarmerRecord(@PathVariable("id") String id) {
+		farmers.remove(Integer.parseInt(id));
+		return new ResponseEntity<Object>("Record deleted successfully", HttpStatus.OK);
+	}
 }

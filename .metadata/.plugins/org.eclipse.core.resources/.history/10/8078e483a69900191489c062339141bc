@@ -1,0 +1,186 @@
+package com.sowing.seed.dao.impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.sowing.seed.dao.IStateDao;
+import com.sowing.seed.model.State;
+
+@Transactional
+@Repository
+public class StateDaoImpl implements IStateDao {
+
+	@PersistenceContext
+	private EntityManager entityManager;
+	
+	
+	@AutoWired
+	
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<State> getAllStates() {
+		String hql = "FROM State ";
+		return (List<State>) entityManager.createQuery(hql).getResultList();
+	}
+
+	@Override
+	public void createState(State state) {
+
+		
+	}
+
+	@Override
+	public void deleteAllInBatch() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteInBatch(Iterable<State> arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<State> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<State> findAll(Sort arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <S extends State> List<S> findAll(Example<S> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <S extends State> List<S> findAll(Example<S> arg0, Sort arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<State> findAllById(Iterable<Integer> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void flush() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public State getOne(Integer arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <S extends State> List<S> saveAll(Iterable<S> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <S extends State> S saveAndFlush(S arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Page<State> findAll(Pageable arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void delete(State arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteAll() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteAll(Iterable<? extends State> arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteById(Integer arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean existsById(Integer arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Optional<State> findById(Integer arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <S extends State> S save(S arg0) {
+		
+		return null;
+	}
+
+	@Override
+	public <S extends State> long count(Example<S> arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public <S extends State> boolean exists(Example<S> arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public <S extends State> Page<S> findAll(Example<S> arg0, Pageable arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <S extends State> Optional<S> findOne(Example<S> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

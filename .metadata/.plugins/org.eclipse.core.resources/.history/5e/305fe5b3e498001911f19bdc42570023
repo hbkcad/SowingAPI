@@ -1,0 +1,10 @@
+package com.sowing.seed.service;
+
+import java.util.List;
+
+import com.sowing.seed.model.State;
+
+public interface ICityService {
+
+	public List<City> getAllStates();
+}

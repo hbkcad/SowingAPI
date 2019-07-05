@@ -1,0 +1,5 @@
+package com.sowing.seed.dao.impl;
+
+public class CityDaoImpl {
+
+}

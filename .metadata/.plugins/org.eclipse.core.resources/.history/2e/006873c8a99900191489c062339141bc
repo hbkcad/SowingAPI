@@ -1,0 +1,12 @@
+package com.sowing.seed.dao;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.sowing.seed.model.City;
+
+public interface ICityDao  extends CrudRepository<City, Integer>{
+	
+
+}

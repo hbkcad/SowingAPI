@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;user&apos; in &apos;com.sowing.seed.mapper.UserRowMapper.mapRow(...)&apos; to &apos;city&apos;&#x0D;&#x0A;- Original project: &apos;seed&apos;&#x0D;&#x0A;- Original element: &apos;com.sowing.seed.mapper.UserRowMapper.mapRow(ResultSet, int).user&apos;&#x0D;&#x0A;- Renamed element: &apos;user&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;user&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src\/main\/java&lt;com.sowing.seed.mapper{CityRowMapper.java[UserRowMapper~mapRow~QResultSet;~I@user!241!263!246!249!QCity;!0!false" name="city" references="true" stamp="1562161844719" version="1.0"/>
+</session>

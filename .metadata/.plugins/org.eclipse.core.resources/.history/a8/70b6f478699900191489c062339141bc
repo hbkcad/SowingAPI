@@ -1,0 +1,18 @@
+package com.sowing.seed.service.impl;
+
+import java.util.List;
+
+import com.sowing.seed.model.City;
+import com.sowing.seed.service.ICityService;
+
+public class CityServiceImpl implements ICityService{
+
+	
+	@Override
+	public List<City> getAllCities() {
+		
+		return null;
+	}
+
+	
+}

@@ -1,0 +1,10 @@
+package com.sowing.seed.dao;
+
+import java.util.List;
+
+import com.sowing.seed.model.City;
+
+public interface ICityDao {
+	public List<City> getAllCities();
+
+}

@@ -1,0 +1,12 @@
+package com.sowing.seed.dao;
+
+import java.util.List;
+
+import com.sowing.seed.model.State;
+
+public interface IStateDao {
+	public List<State> getAllStates();
+
+	public void createState(State state);
+
+}
